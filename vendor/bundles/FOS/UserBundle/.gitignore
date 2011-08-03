@@ -1,0 +1,4 @@
+phpunit.xml
+Tests/autoload.php
+nbproject
+catalog.xml

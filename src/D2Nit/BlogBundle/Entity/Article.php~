@@ -1,0 +1,122 @@
+<?php
+
+namespace D2Nit\BlogBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use FOS\CommentBundle\Entity\Thread as BaseThread;
+
+/**
+ * @ORM\Entity
+ * @ORM\Table(name="blog_article")
+ * @ORM\ChangeTrackingPolicy("DEFERRED_EXPLICIT")
+ */
+class Article extends BaseThread
+{	
+	/**
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+	protected $id;
+	
+	/**
+	 * @ORM\Column(type="string", length=128)
+	 */
+	protected $title;
+	
+	/*
+	 * @ORM\Column(type="text")
+	 */
+	protected $content;
+		
+	/**
+	 * 
+	 * @ORM\ManyToOne(targetEntity="User")
+	 */
+	protected $author;
+	
+	/**
+	 * @ORM\ManyToMany(targetEntity="Category")
+	 */
+	protected $categories;
+	
+	public function __toString()
+	{
+		return $this->title;
+	}
+	
+    public function __construct()
+    {
+        $this->categories = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set title
+     *
+     * @param string $title
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
+    }
+
+    /**
+     * Get title
+     *
+     * @return string 
+     */
+    public function getTitle()
+    {
+        return $this->title;
+    }
+
+    /**
+     * Add categories
+     *
+     * @param D2Nit\BlogBundle\Entity\Category $categories
+     */
+    public function addCategories(\D2Nit\BlogBundle\Entity\Category $categories)
+    {
+        $this->categories[] = $categories;
+    }
+
+    /**
+     * Get categories
+     *
+     * @return Doctrine\Common\Collections\Collection 
+     */
+    public function getCategories()
+    {
+        return $this->categories;
+    }
+
+    /**
+     * Set author
+     *
+     * @param D2Nit\BlogBundle\Entity\User $author
+     */
+    public function setAuthor(\D2Nit\BlogBundle\Entity\User $author)
+    {
+        $this->author = $author;
+    }
+
+    /**
+     * Get author
+     *
+     * @return D2Nit\BlogBundle\Entity\User 
+     */
+    public function getAuthor()
+    {
+        return $this->author;
+    }
+}

@@ -1,0 +1,11 @@
+D2NitBlogBundle_homepage:
+    pattern:  /
+    defaults: { _controller: D2NitBlogBundle:Default:index }
+    
+D2NitBlogBundle_article_show:
+  pattern:  /article/{category}/{identifier}
+  defaults: { _controller: D2NitBlogBundle:Article:show }
+  
+D2NitBlogBundle_category_show:
+  pattern:  /article/{category}
+  defaults: { _controller: D2NitBlogBundle:Article:showByCategory }

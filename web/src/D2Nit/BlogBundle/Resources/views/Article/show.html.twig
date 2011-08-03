@@ -1,0 +1,12 @@
+{% extends '::base.html.twig' %}
+
+
+{% block body %}
+	<h1>{{ article.title }}</h1>
+	
+	<div class='body'>
+		{{ article.content }}
+	</div>
+
+	{% render "FOSCommentBundle:Thread:show" with {"identifier": article.identifier } %}
+{% endblock %}

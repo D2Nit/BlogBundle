@@ -1,3 +1,0 @@
-D2NitBlogBundle_homepage:
-    pattern:  /hello/{name}
-    defaults: { _controller: D2NitBlogBundle:Default:index }

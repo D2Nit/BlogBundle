@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+        <service id="sonata.admin.pool" class="Sonata\AdminBundle\Admin\Pool">
+            <argument type="service" id="service_container" />
+        </service>
+
+        <service id="sonata.admin.route_loader" class="Sonata\AdminBundle\Route\AdminPoolLoader">
+            <argument type="service" id="sonata.admin.pool" />
+            <argument />
+            <argument type="service" id="service_container" />
+            <tag name="routing.loader" />
+        </service>
+
+        <service id="sonata.admin.helper" class="Sonata\AdminBundle\Admin\AdminHelper">
+            <argument type="service" id="sonata.admin.pool" />
+        </service>
+
+        <service id="sonata.admin.security.handler.noop" class="Sonata\AdminBundle\Security\Handler\NoopSecurityHandler" />
+
+        <service id="sonata.admin.security.handler.acl" class="Sonata\AdminBundle\Security\Handler\AclSecurityHandler">
+            <argument type="service" id="security.context" on-invalid="null" />
+        </service>
+
+    </services>
+
+</container>
+

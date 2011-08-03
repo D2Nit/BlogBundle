@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+        <service id="sonata.admin.form.type.admin" class="Sonata\AdminBundle\Form\Type\AdminType">
+            <tag name="form.type" alias="sonata_type_admin" />
+        </service>
+
+        <service id="sonata.admin.form.type.collection" class="Sonata\AdminBundle\Form\Type\CollectionType">
+            <tag name="form.type" alias="sonata_type_collection" />
+        </service>
+
+        <service id="sonata.admin.form.type.model" class="Sonata\AdminBundle\Form\Type\ModelType">
+            <tag name="form.type" alias="sonata_type_model" />
+        </service>
+
+        <service id="sonata.admin.form.type.array" class="Sonata\AdminBundle\Form\Type\ImmutableArrayType">
+            <tag name="form.type" alias="sonata_type_immutable_array" />
+        </service>
+
+    </services>
+
+</container>
